@@ -1,0 +1,57 @@
+{% extends "mymodule/base.html" %}
+
+{% block content %}
+<div class="container">
+    <form action="{% url 'customer:cust_login' %}" method="post">
+        {% csrf_token %}
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Customer Login</div>
+                <div class="panel-body">
+                    {% if error_message %}
+                        <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                    {% endif %}
+
+                    {% if messages %}
+                      <ul class="messages">
+                          {% for message in messages %}
+                          <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                          {% endfor %}
+                      </ul>
+                      {% endif %}
+
+                    <div class="form-group clearfix">
+                        <label class="col-md-4 control-label text-right">Username<span class="text-red">*</span>:</label>
+                        <div class="col-md-6">
+                            {{ form.username }}
+                        </div>
+                    </div>
+
+                    <div class="form-group clearfix">
+                        <label class="col-md-4 control-label text-right">Password<span class="text-red">*</span>:</label>
+                        <div class="col-md-6">
+                            {{ form.password }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-md-offset-4">
+                        <input type="submit" value="Login" class="btn btn btn-success">
+                    </div>
+
+                    <div class="col-md-6 col-md-offset-4">
+                      Don't have an account? <a href="/customer/register" target="blank"><strong>register here</strong></a>!
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+
+
+
+
+
+
+{% endblock %}

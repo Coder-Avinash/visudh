@@ -1,0 +1,56 @@
+{% extends "admin/dashboard.html" %}
+
+{% block content %}
+<div class="col-sm-3 sidenav hidden-xs well">
+  <h2>Hi Admin <div class="col-md-8"></div> <button type="button" class="logout btn-info">Logout</button></h2>
+
+  <ul class="nav nav-pills nav-stacked">
+    <li><a href="/admin/dashboard">Dashboard</a></li>
+    <li><a href="#section2">Settings</a></li>
+    <li class="active"><a href="/admin/users">Users</a></li>
+    <li><a href="/admin/customers">Customers</a></li>
+    <li><a href="/admin/employees">Employee</a></li>
+    <li><a href="/admin/businesses">Business</a></li>
+  </ul><br>
+</div>
+<br>
+  {% if all_users %}
+
+  <div class="container col-sm-9">
+  <table class="table table-striped">
+    <thead>
+      <tr class=" success">
+        <th scope="col">ID </th>
+        <th scope="row">First Name</th>
+        <th scope="row">Last Name</th>
+        <th scope="row">Email</th>
+      </tr>
+    </thead>
+    {% for user in all_users%}
+    <tbody >
+      <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.first_name }}</td>
+        <td>{{ user.last_name }}</td>
+        <td>{{ user.email }}</td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  <br>
+  <a href= "/pdf/" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Download PDF</a>
+  <a href= "#" class="btn btn-success btn-lg active" role="button" >Print Me</a>
+  </div>
+
+
+  <!-- <li>{{ user.username }}</li>
+  <li>{{ user.first_name }}</li>
+  <li>{{ user.email }}</li>
+  <li>{{ user.last_name }}</li> -->
+
+
+  {% endif %}
+
+
+
+{% endblock %}

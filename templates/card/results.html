@@ -1,0 +1,53 @@
+{% extends "mymodule/base.html" %}
+{% block content %}
+
+{% if all_username %}
+
+<h2>VISUDH AJIVAM</h2>
+{% for users in all_username %}
+{% for fields in all_details %}
+<div class="container">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">ID CARD</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">First Name</th>
+      <td>{{ users.first_name }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Last Name</th>
+      <td>{{ fields.blood_group }}</td>
+    </tr>
+    <tr>
+      <th scope="row">Email</th>
+      <td>{{ users.email }}</td>
+    </tr>
+  </tbody>
+</table>
+<a href= "/pdf/" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Download PDF</a>
+<a href= "#" class="btn btn-success btn-lg active" role="button" >Print Me</a>
+<br>
+</div>
+<br>
+{% endfor %}
+{% endfor %}
+
+<!-- <ul>
+   {% for users in all_username %}
+    <li>{{ users.username }}</li>
+    <li>{{ users.first_name }}</li>
+    <li>{{ users.email }}</li>
+    <li>{{ users.last_name }}</li>
+   {% endfor %}
+</ul> -->
+
+{% else %}
+<h2>No search result found</h2>
+{% endif %}
+
+{% endblock %}

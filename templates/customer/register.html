@@ -1,0 +1,205 @@
+{% extends "mymodule/base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="{% url 'customer:cust_register' %}" method="post">
+            {% csrf_token %}
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Customer Register</b></div>
+                    <div class="panel-body">
+                        {% if error_message %}
+                            <p class="bg-danger p-d ml-b">{{ error_message }}</p>
+                        {% endif %}
+                        {% if messages %}
+                          <ul class="messages">
+                              {% for message in messages %}
+                              <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                              {% endfor %}
+                          </ul>
+                          {% endif %}
+                        <!-- {{ customer_form.as_p }} -->
+                        <!-- {{ profile_form.as_p }} -->
+                        <div class="form-group clearfix">
+                            <label class="col-md-4 control-label text-right">Username<span class="text-red">*</span>:</label>
+                            <div class="col-md-6" >
+                                {{ customer_form.username }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Email<span class="text-red">*</span>:</label>
+                            <div class="col-md-6">
+                                {{ customer_form.email }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-md-4 control-label text-right">Password<span class="text-red">*</span>:</label>
+                            <div class="col-md-6">
+                                {{ customer_form.password }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label class="col-md-4 control-label text-right">Confirm password:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ customer_form.password_repeat }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">First Name:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ customer_form.first_name }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Last Name:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ customer_form.last_name }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Phone Number:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.phone_number }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Alternate Phone Number:</label>
+                            <div class="col-md-6">
+                                {{ profile_form.alt_phone_number }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Registering As:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.registered_as }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Gender:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.gender }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">DOB<small>(mm/dd/yyyy)</small>:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.dob }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Blood Group:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.blood_group }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Aadhaar Number:</label>
+                            <div class="col-md-6">
+                                {{ profile_form.aadhar_number }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Fathers Name:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.father_name }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Mothers Name:</label>
+                            <div class="col-md-6">
+                                {{ profile_form.mother_name }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Members In Family:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.number_of_family_members }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Proffesion:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.proffesion }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Annual Income:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.annual_income }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Maritial Status:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.maritial_status }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Disease (if any):</label>
+                            <div class="col-md-6">
+                                {{ profile_form.disease }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Refrence By:</label>
+                            <div class="col-md-6">
+                                {{ profile_form.refrence_record }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Address:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.address }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Country:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.country }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">State:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.state }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">District:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.district }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Pincode:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.pincode }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Profile Image:</label>
+                            <div class="col-md-6">
+                                {{ profile_form.picture }}
+                            </div>
+                        </div>
+                        <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">Decleration:<span class="text-red">*</span></label>
+                            <div class="col-md-6">
+                                {{ profile_form.profile_status }} <small>I accept all the terms and conditions of Visudh Ajivam</small>
+                            </div>
+                        </div>
+                        <!-- <div class="form-group clearfix">
+                            <label  class="col-md-4 control-label text-right">User:</label>
+                            <div class="col-md-6">
+                                {{ profile_form.user }}
+                            </div>
+                        </div> -->
+                        <div class="col-md-6 col-md-offset-4">
+                            <input type="submit" value="Register" class="btn btn-success">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

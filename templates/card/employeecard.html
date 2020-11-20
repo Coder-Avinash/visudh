@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load static %}
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/employeecard.css' %}">
+    <title>I-Card</title>
+</head>
+
+<body>
+  {% if all_username %}
+  {% for users in all_username %}
+  {% for fields in all_details %}
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center">
+                <div class="row logo">
+                    <img src="{% static 'images/card/logo.jpeg' %}" alt="">
+                    <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+                </div>
+                <div class="row user-detail">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <img src="{{fields.picture}}" class="rounded-circle img-thumbnail">
+                        <h5>{{users.first_name}} {{users.last_name}}</h5>
+                        <p><i aria-hidden="true"></i>Employee I'D</p>
+                        <hr>
+                        <table>
+                            <tr>
+                                <th>ID NO</th>
+                                <th>2020EMP00{{users.id}}</th>
+                            </tr>
+                            <tr>
+                                <th>DOB</th>
+                                <th>{{fields.dob}}</th>
+                            </tr>
+                            <tr>
+                                <th>E-mail</th>
+                                <th>{{users.email}}</th>
+                            </tr>
+                            <tr>
+                                <th>Contact</th>
+                                <th>+91{{fields.phone_number}}</th>
+                            </tr>
+                            <tr>
+                                <th>Blood</th>
+                                <th>{{fields.blood_group}}</th>
+                            </tr>
+                            <tr>
+                                <th>Gender</th>
+                                <th>{{fields.gender}}</th>
+                            </tr>
+                        </table>
+                        <!-- <hr> -->
+                    </div>
+                </div>
+                <div class="row user-social-detail">
+                    <div class="col-lg-12 col-sm-12 col-12">
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% else %}
+    <h2>No search result found</h2>
+    {% endif %}
+</body>
+
+</html>
